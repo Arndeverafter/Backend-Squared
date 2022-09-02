@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'rollbar'),
+    'default' => env('LOG_CHANNEL', 'bugsnag'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,11 +54,8 @@ return [
             'days' => 14,
         ],
 
-        'rollbar' => [
-            'driver' => 'monolog',
-            'handler' => \Rollbar\Laravel\MonologHandler::class,
-            'access_token' => env('ROLLBAR_TOKEN'),
-            'level' => 'debug',
+        'bugsnag' => [
+            'driver' => 'bugsnag',
         ],
 
         'slack' => [

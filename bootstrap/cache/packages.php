@@ -73,17 +73,6 @@
       0 => 'Pest\\Laravel\\PestServiceProvider',
     ),
   ),
-  'rollbar/rollbar-laravel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Rollbar\\Laravel\\RollbarServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Rollbar' => 'Rollbar\\Laravel\\Facades\\Rollbar',
-    ),
-  ),
   'wulfheart/pretty_routes' => 
   array (
     'providers' => 

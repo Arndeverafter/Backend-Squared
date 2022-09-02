@@ -11,6 +11,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use RuntimeException;
 
 class PostController extends Controller
 {
@@ -50,6 +52,8 @@ class PostController extends Controller
      */
     public function index(): JsonResponse
     {
+        Bugsnag::notifyException(new RuntimeException("Test error"));
+
         // if sort param is passed in the request then sort otherwise default the latest publications will be returned
         $posts = Post::filterSort(request()->toArray())->paginate(30);
         return UtilsHelper::apiResponseConstruct('payload', $posts, 201);

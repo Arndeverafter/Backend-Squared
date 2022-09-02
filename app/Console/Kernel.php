@@ -29,6 +29,17 @@ class Kernel extends ConsoleKernel
         $schedule->command('squared:fetch-posts')->everyThirtyMinutes();
     }
 
+
+    /*
+     * BugSnag Out of Memory Handler*/
+    protected function bootstrappers(): array
+    {
+        return array_merge(
+            [\Bugsnag\BugsnagLaravel\OomBootstrapper::class],
+            parent::bootstrappers(),
+        );
+    }
+
     /**
      * Register the commands for the application.
      *

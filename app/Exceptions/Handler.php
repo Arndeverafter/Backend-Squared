@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use App\Helpers\FeedBackHelper;
 use App\Helpers\UtilsHelper;
+use Bugsnag;
+
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -59,6 +61,7 @@ class Handler extends ExceptionHandler
         }
 
         if ($e instanceof ModelNotFoundException && $request->wantsJson()) {
+            Bugsnag::notifyException($e);
             return UtilsHelper::apiResponseConstruct('message',  $e->getMessage(), $e->getCode());
         }
         // CSRF Exceptions
@@ -67,11 +70,8 @@ class Handler extends ExceptionHandler
         }
 
         if ($e instanceof ThrottleRequestsException && $request->wantsJson()) {
+            Bugsnag::notifyException($e);
             return UtilsHelper::apiResponseConstruct('message',  $e->getMessage(), $e->getCode());
-        }
-
-        if ($e instanceof UniqueConstraintViolationException && $request->wantsJson()) {
-            return UtilsHelper::apiResponseConstruct('message',  $e->getMessage(), 490);
         }
 
         if ($e instanceof UniqueConstraintViolationException && $request->wantsJson()) {
