@@ -2,7 +2,7 @@
 
 ## Tech Stacks
 
--   🛠 [Laravel 8 with a minimum of PHP 7](http://https://laravel.com/docs/8.x/ "Laravel with a minimum of PHP 7")
+-   🛠 [Laravel 8 with a minimum of PHP 7](https://laravel.com/docs/8.x/ "Laravel with a minimum of PHP 7")
 -   ⚡️ [Laravel Fortify with Sanctum ](https://laravel.com/docs/8.x/fortify "Laravel Fortify ")
 -   🗂 [guzzle http Client](https://docs.guzzlephp.org/en/stable/ "guzzle http Client")
 -   🛣 [Bugsnag for error Reporting](https://www.bugsnag.com/ "Bugsnag for error Reporting")
