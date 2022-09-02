@@ -1,0 +1,339 @@
+{
+	"info": {
+		"_postman_id": "6b277736-43a4-49e7-b604-c254600885a5",
+		"name": "blogger",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authetication",
+			"item": [
+				{
+					"name": "Get XSRF Token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "{{host}}",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{xsrf-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"littlerock@squared.com\",\r\n    \"password\": \"!!Sisitu12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{xsrf-token}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Referer",
+								"value": "{{host}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/authors",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "{{host}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}authors/1",
+							"host": [
+								"{{url}}authors"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Get Posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "{{host}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/posts",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": "You do not need to be Autheticated to view posts\r\n\r\nResults are paginated about 30 data streams per request\r\n\r\nBy Default the Author of the given post is included in the given results\r\n\r\nBy default : Results are sorted with the recent Publication Date"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "Get a given post by post id\r\n\r\nBy Default the post will be returned with the author details\r\n\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "{{host}}",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{xsrf-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Lorem ipsum ddDeoreed\",\r\n    \"description\" : \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies felis id ante ornare, vitae tincidunt arcu luctus. Nunc nec diam sit amet leo vestibulum sodales at eu justo. Nulla in scelerisque eros, vitae egestas lorem. Nullam a erat turpis. Nunc dapibus \\n\\n eget neque a facilisis. Curabitur et consequat elit, ac viverra nunc. Fusce sodales congue pharetra. Nunc convallis blandit tellus, at placerat purus iaculis ac. Suspendisse ac porta dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. In vehicula ex id volutpat varius. Phasellus tempus mi quis dignissim dapibus. Duis varius tincidunt ipsum, vitae molestie ligula varius ac. Vestibulum ornare nisl ut euismod finibus. Aliquam tincidunt, justo non ullamcorper pretium, \\n\\nleo mi suscipit orci, vel interdum justo erat vel nisi.Nunc finibus egestas pulvinar. Sed mattis risus sit amet suscipit commodo. Donec sit amet commodo erat. Nullam a tempor dolor, ac ultricies tellus. Curabitur augue est, iaculis a justo nec, luctus sodales nisl. Donec facilisis viverra vestibulum. Fusce blandit porta velit, ut tristique magna. Quisque arcu massa, facilisis vitae tortor commodo, finibus varius odio. Nulla ligula diam, commodo et libero et, \\n\\n finibus feugiat quam. Fusce quis orci a purus pulvinar ullamcorper. Sed consequat fringilla faucibus. Fusce cursus mi sed nibh viverra, a tincidunt lectus aliquam. Suspendisse diam arcu, tristique quis ante eu, tempor porta augue. Sed bibendum sapien mauris, vel hendrerit urna dapibus at. Maecenas vel rhoncus massa. Curabitur eget dignissim velit.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/posts",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": "Here you can create a new post\r\nOnly registered and logged on users can perform this action\r\nRequests\r\n\r\n{\"title\"  :  \"Lorem ipsum ddDeoreed\",\"description\"  :  \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.a \" }\r\n\r\nRemember\r\nTitle is a unique field meaning all posts will have unique titles."
+					},
+					"response": []
+				},
+				{
+					"name": "Search / Sort Posts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": 1,\r\n    \"sort\": true,\r\n    \"search\": \"nemo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/get-posts",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"get-posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Posts from Third Party",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{host}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{xsrf-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/queryNewPosts",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"queryNewPosts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.sendRequest({",
+					"    url: 'http://localhost/SquareBlog/backend/public/sanctum/csrf-cookie',",
+					"    method: 'GET'",
+					"}, function (error, response, { cookies }) {",
+					"    if (!error) {",
+					"        pm.environment.set('xsrf-token', cookies.get('XSRF-TOKEN'))",
+					"    }",
+					"})"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost/SquareBlog/backend/public/"
+		}
+	]
+}
